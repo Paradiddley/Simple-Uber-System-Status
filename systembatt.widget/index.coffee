@@ -25,7 +25,7 @@ style =
 	icon:
 		png: "/systembatt.widget/PNG/laptop-2-32.png"
 
-command: "pmset -g batt | egrep \"([0-9]+\%).*\" -o --colour=auto | cut -f1 -d';'"
+command: "pmset -g batt | egrep -E \"([0-9]+\%)\" -o --colour=auto | cut -f1 -d';'"
 
 refreshFrequency: (1000 * 3)
 
@@ -42,25 +42,25 @@ update: (output, domEl) ->
   $(domEl).find('.system-val').html(output)
 
 style: """
-	top: #{@style.position.top}
-	bottom: #{@style.position.bottom}
-	right: #{@style.position.right}
-	left: #{@style.position.left}
-	width: #{@style.width}
-	font-family: #{@style.font}
-	color: #{@style.font_color}
-	font-weight: #{@style.font_weight}
-	text-align: #{@style.text_align}
-	text-transform: #{@style.text_transform}
-	font-size: #{@style.font_size}
-	letter-spacing: #{@style.letter_spacing}
+	top: #{style.position.top}
+	bottom: #{style.position.bottom}
+	right: #{style.position.right}
+	left: #{style.position.left}
+	width: #{style.width}
+	font-family: #{style.font}
+	color: #{style.font_color}
+	font-weight: #{style.font_weight}
+	text-align: #{style.text_align}
+	text-transform: #{style.text_transform}
+	font-size: #{style.font_size}
+	letter-spacing: #{style.letter_spacing}
 	font-smoothing: antialiased
-	text-shadow: #{@style.shadow.x_offset} #{@style.shadow.y_offset} #{@style.shadow.blur} #{@style.shadow.color}
+	text-shadow: #{style.shadow.x_offset} #{style.shadow.y_offset} #{style.shadow.blur} #{style.shadow.color}
 
 	.icon
-		background: url('#{@style.icon.png}')
-		-webkit-filter: drop-shadow(#{@style.shadow.x_offset} #{@style.shadow.y_offset} #{@style.shadow.blur} #{@style.shadow.color})
-		filter: drop-shadow(#{@style.shadow.x_offset} #{@style.shadow.y_offset} #{@style.shadow.blur} #{@style.shadow.color})
+		background: url('#{style.icon.png}')
+		-webkit-filter: drop-shadow(#{style.shadow.x_offset} #{style.shadow.y_offset} #{style.shadow.blur} #{style.shadow.color})
+		filter: drop-shadow(#{style.shadow.x_offset} #{style.shadow.y_offset} #{style.shadow.blur} #{style.shadow.color})
 
 	.bg
     height: 40px
